@@ -1,6 +1,6 @@
 [project]
 name = "osrm-utils"
-version = "1.0.0"
+version = "1.0.1"
 description = "OSRM Utils for Python"
 authors = [
   {name = "Golden M, Inc.", email = "software@goldenm.com"}
@@ -39,21 +39,23 @@ Changelog = "https://github.com/goldenm-software/osrm-utils/blob/main/CHANGELOG.
 [build-system]
 requires = ["setuptools", "setuptools-scm"]
 build-backend = "setuptools.build_meta"
+
 [tool.ruff]
 indent-width = 2
 line-length = 120
 
-exclude = [
-  "**/migrations/*",
-  "**/templates/*",
-  ".venv",
-]
+exclude = [".venv"]
 
 [tool.ruff.lint]
 ignore = [
   "F401", # Unused import
   "E701", # Multiple statements on one line
   "TD003", # Missing issue link
+]
+
+exclude = [
+  ".venv",
+  "test.py"
 ]
 
 select = [
@@ -63,10 +65,10 @@ select = [
   "B", # flakes8-bugbear
   "TD", # flake8-todo
   "DJ", # flake8-django
-  # "DTZ", # flake8-datetimez
-  # "T20", # flake8-print # En un futuro
+  "DTZ", # flake8-datetimez
+  "T20", # flake8-print # En un futuro
   "PYI", # flake8-pyi
-  # "ANN", # flake8-annotations
+  "ANN", # flake8-annotations
 ]
 
 [tool.ruff.format]

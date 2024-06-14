@@ -1,6 +1,6 @@
 """Responses"""
 
-from typing import List
+from typing import List, Self
 
 from .classes import Route, Waypoint
 
@@ -8,7 +8,7 @@ from .classes import Route, Waypoint
 class TripResponse:
   """OSRM Trip response object"""
 
-  def __init__(self, trips: List[Route], waypoints: List[Waypoint]) -> None:
+  def __init__(self: Self, trips: List[Route], waypoints: List[Waypoint]) -> None:
     """
     Trip Response
 
@@ -23,7 +23,7 @@ class TripResponse:
 class NearestResponse:
   """OSRM Nearest response object"""
 
-  def __init__(self, waypoints: List[Waypoint]) -> None:
+  def __init__(self: Self, waypoints: List[Waypoint]) -> None:
     """
     Nearest Response
 
@@ -36,7 +36,7 @@ class NearestResponse:
 class RouteResponse:
   """OSRM Route response object"""
 
-  def __init__(self, routes: List[Route], waypoints: List[Waypoint]) -> None:
+  def __init__(self: Self, routes: List[Route], waypoints: List[Waypoint]) -> None:
     """
     Route Response
 
@@ -51,7 +51,7 @@ class RouteResponse:
 class MatchResponse:
   """OSRM Match response object"""
 
-  def __init__(self, matchings: List[Route], waypoints: List[Waypoint]) -> None:
+  def __init__(self: Self, matchings: List[Route], waypoints: List[Waypoint]) -> None:
     """
     Match Response
 

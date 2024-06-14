@@ -1,6 +1,7 @@
 """Annotations"""
 
 from enum import Enum
+from typing import Self
 
 
 class Annotation(Enum):
@@ -13,7 +14,7 @@ class Annotation(Enum):
   DATA_SOURCES = 'datasources'
   SPEED = 'speed'
 
-  def __str__(self) -> str:
+  def __str__(self: Self) -> str:
     return self.value
 
 
@@ -24,7 +25,7 @@ class Overview(Enum):
   FULL = 'full'
   NONE = 'false'
 
-  def __str__(self) -> str:
+  def __str__(self: Self) -> str:
     return self.value
 
 
@@ -35,7 +36,7 @@ class PointFix(Enum):
   LAST_POINT = 'last'
   ANY_POINT = 'any'
 
-  def __str__(self) -> str:
+  def __str__(self: Self) -> str:
     return self.value
 
 
@@ -52,7 +53,7 @@ class Indication(Enum):
   SHARP_LEFT = 'sharp left'
   NONE = 'none'
 
-  def __str__(self) -> str:
+  def __str__(self: Self) -> str:
     return self.value
 
 
@@ -75,7 +76,7 @@ class ManeuverType(Enum):
   TURN = 'turn'
   NEW_NAME = 'new name'
 
-  def __str__(self) -> str:
+  def __str__(self: Self) -> str:
     return self.value
 
 
@@ -85,5 +86,5 @@ class Gap(Enum):
   SPLIT = 'split'
   IGNORE = 'ignore'
 
-  def __str__(self) -> str:
+  def __str__(self: Self) -> str:
     return self.value

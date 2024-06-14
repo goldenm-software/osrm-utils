@@ -1,14 +1,20 @@
 """OSRM Classes"""
 
-from typing import Dict, List
+from typing import Dict, List, Self, TypeVar
 
 from .enums import Indication, ManeuverType
+
+T = TypeVar('T', bound='Point')
 
 
 class Point:
   """Geographic point"""
 
-  def __init__(self, latitude: float, longitude: float) -> None:
+  def __init__(
+    self: Self,
+    latitude: float,
+    longitude: float,
+  ) -> None:
     """
     Point definition
 
@@ -28,7 +34,7 @@ class Point:
     self.latitude = latitude
     self.longitude = longitude
 
-  def __str__(self):
+  def __str__(self: Self) -> str:
     return f'GeoPoint(lat={self.latitude}, lng={self.longitude})'
 
 
@@ -36,7 +42,7 @@ class StepManeuver:
   """Step Maneuver"""
 
   def __init__(
-    self,
+    self: Self,
     bearing_after: float,
     bearing_before: float,
     location: Point,
@@ -79,7 +85,7 @@ class StepManeuver:
     else:
       self.maneuver_type = ManeuverType(maneuver_type)
 
-  def __str__(self) -> str:
+  def __str__(self: Self) -> str:
     return f'OsrmStepManeuver(location={self.location}, modifier={self.modifier}, type={self.maneuver_type})'
 
 
@@ -87,7 +93,7 @@ class Lane:
   """Lane"""
 
   def __init__(
-    self,
+    self: Self,
     indications: List[str],
     valid: bool,
   ) -> None:
@@ -111,7 +117,7 @@ class Intersection:
   """Instersection"""
 
   def __init__(
-    self,
+    self: Self,
     location: Point,
     bearings: List[float],
     entry: List[bool],
@@ -137,7 +143,7 @@ class Intersection:
     self.in_index = in_index
     self.lanes = lanes
 
-  def __str__(self) -> str:
+  def __str__(self: Self) -> str:
     return (
       f'OsrmIntersection(location={self.location}, bearings={self.bearings}, entry={self.entry}, '
       f'lanes={len(self.lanes)} lanes'
@@ -148,7 +154,7 @@ class RouteStep:
   """Route Step"""
 
   def __init__(
-    self,
+    self: Self,
     maneuver: StepManeuver,
     intersections: List[Intersection],
     mode: str,
@@ -160,7 +166,7 @@ class RouteStep:
     name: str | None = None,
     destinations: str | None = None,
     exits: str | None = None,
-  ):
+  ) -> None:
     """
     OSRM Step
 
@@ -194,7 +200,7 @@ class RouteStep:
     else:
       self.name = name
 
-  def __str__(self) -> str:
+  def __str__(self: Self) -> str:
     name = self.name
     if len(name) > 10:
       name = f'{name[:10]}...'
@@ -209,7 +215,7 @@ class RouteLeg:
   """Route Leg"""
 
   def __init__(
-    self,
+    self: Self,
     summary: str,
     steps: List[RouteStep],
     weight: float = 0.0,
@@ -232,7 +238,7 @@ class RouteLeg:
     self.distance = distance
     self.duration = duration
 
-  def __str__(self) -> str:
+  def __str__(self: Self) -> str:
     summary = self.summary
     if len(self.summary) > 10:
       summary = f'{self.summary[:10]}...'
@@ -247,7 +253,7 @@ class Waypoint:
   """Waypoint"""
 
   def __init__(
-    self,
+    self: Self,
     name: str,
     location: Point,
     distance: float = 0.0,
@@ -277,7 +283,7 @@ class Waypoint:
     self.matchings_index = matchings_index
     self.alternatives_count = alternatives_count
 
-  def __str__(self) -> str:
+  def __str__(self: Self) -> str:
     name = self.name
     if len(self.name) > 10:
       name = f'{self.name[:10]}...'
@@ -289,7 +295,7 @@ class Route:
   """Route"""
 
   def __init__(
-    self,
+    self: Self,
     geometry: str,
     legs: List[RouteLeg],
     weight_name: str,
@@ -318,7 +324,7 @@ class Route:
     self.duration = duration
     self.condifence = condifence
 
-  def __str__(self) -> str:
+  def __str__(self: Self) -> str:
     geometry = self.geometry
     if len(self.geometry) > 5:
       geometry = f'{self.geometry[:5]}...'

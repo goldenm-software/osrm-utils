@@ -1,7 +1,7 @@
 """OSRM Python API"""
 
 import logging
-from typing import Dict, List, Tuple
+from typing import Dict, List, Self, Tuple
 
 import requests
 
@@ -38,7 +38,7 @@ class Osrm:
   """
 
   def __init__(
-    self,
+    self: Self,
     base_url: str = 'http://router.project-osrm.org',
     timeout: float = 30,
   ) -> None:
@@ -54,7 +54,7 @@ class Osrm:
     log.debug('Initializing OSRM client with base URL %s', base_url)
 
   def nearest(
-    self,
+    self: Self,
     point: Point,
     profile: str = 'driving',
     return_elements: int = 1,
@@ -94,7 +94,7 @@ class Osrm:
     return NearestResponse(waypoints=waypoints)
 
   def route(
-    self,
+    self: Self,
     points: List[Point],
     alternatives: int = 0,
     profile: str = 'driving',
@@ -152,7 +152,7 @@ class Osrm:
     return RouteResponse(routes=routes, waypoints=waypoints)
 
   def match(
-    self,
+    self: Self,
     points: List[Point],
     profile: str = 'driving',
     steps: bool = False,
@@ -216,7 +216,7 @@ class Osrm:
     return MatchResponse(matchings=matchings, waypoints=tracepoints)
 
   def trip(
-    self,
+    self: Self,
     points: List[Point],
     profile: str = 'driving',
     source: PointFix = PointFix.FIRST_POINT,
@@ -258,7 +258,7 @@ class Osrm:
     return TripResponse(trips=trips, waypoints=waypoints)
 
   def _process_routes_and_waypoints(
-    self,
+    self: Self,
     data: Dict,
     route_key: str,
     waypoint_key: str,
